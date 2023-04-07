@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const axios = require("axios");
-const port = process.env.PORT || 8080;
+const port = 8080;
 
 app.set("view engine", "ejs");
 
@@ -21,7 +21,6 @@ app.get("/", (req, res) => {
     .request(config)
     .then((response) => {
       const data = JSON.parse(response.data["m2m:cin"].con);
-      // console.log(data);
       res.render("index", { data: data });
     })
     .catch((error) => {
